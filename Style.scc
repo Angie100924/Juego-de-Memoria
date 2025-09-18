@@ -1,0 +1,88 @@
+/* style.css */
+
+/* Variables de color */
+:root {
+  --card-width: 100px;
+  --card-height: 120px;
+  --card-bg: #ffffff;
+  --card-shadow: rgba(0,0,0,0.2);
+  --accent-color: #9923a8;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #d6c4d8;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+}
+
+h1 {
+  color: var(--accent-color);
+}
+
+.game-info {
+  margin: 10px;
+  display: flex;
+  gap: 15px;
+  align-items: center;
+}
+
+button {
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+.game-board {
+  display: grid;
+  grid-template-columns: repeat(4, var(--card-width));
+  grid-gap: 15px;
+  margin-top: 2px;
+}
+
+/* Carta estilo flip */
+.card {
+  width: var(--card-width);
+  height: var(--card-height);
+  perspective: 1000px; /* necesario para efecto 3D */
+}
+
+.card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform 0.6s;
+  transform-style: preserve-3d;
+  cursor: pointer;
+  border-radius: 10px;
+}
+
+.card.flipped .card-inner {
+  transform: rotateY(180deg);
+}
+
+.card-front,
+.card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 10px;
+  backface-visibility: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  box-shadow: 0 4px 8px var(--card-shadow);
+}
+
+.card-front {
+  background-color: var(--card-bg);
+}
+
+.card-back {
+  background-color: var(--accent-color);
+  color: #b267b9;
+  transform: rotateY(180deg);
+}
